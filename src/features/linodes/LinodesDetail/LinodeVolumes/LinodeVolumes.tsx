@@ -777,7 +777,7 @@ class LinodeVolumes extends React.Component<CombinedProps, State> {
                     volume,
                   );
 
-                  return <TableRow key={volume.id} data-qa-volume-cell={volume.id}>
+                  return <TableRow key={volume.id} data-qa-volume-cell>
                     <TableCell data-qa-volume-cell-label>{label}</TableCell>
                     <TableCell data-qa-volume-size>{size} GiB</TableCell>
                     <TableCell data-qa-fs-path>{filesystem_path}</TableCell>

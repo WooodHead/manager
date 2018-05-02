@@ -47,23 +47,10 @@ exports.browserCommands = () => {
     * @param { String } selector to wait for/click
     * @returns { null } Returns nothing
     */
-    browser.addCommand('waitClick', function(elementToClick, timeout=10000) {
+    browser.addCommand('waitClick', function(elementToClick) {
         browser.waitUntil(function() {
             browser.waitForVisible(elementToClick);
             return browser.click(elementToClick).state === 'success';
-        }, timeout);
-    });
-
-    /* Continuously try to set a value on a given selector
-    *  for a given timeout. Returns once the value has been successfully set
-    * @param { String } selector to target (usually an input)
-    * @param { String } value to set input of
-    * @param { Number } timeout
-    */
-    browser.addCommand('trySetValue', function(selector, value, timeout=10000) {
-        browser.waitUntil(function() {
-            browser.setValue(selector, value);
-            return browser.getValue(selector) === value;
-        }, timeout);
+        }, 10000);
     });
 }

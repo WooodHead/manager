@@ -1,15 +1,10 @@
 import SearchBar from '../../pageobjects/search.page';
-import ListLinodes from '../../pageobjects/list-linodes';
 
 const { constants } = require('../../constants');
 
 describe('Header - Search Suite', () => {
-    let testLinode;
-
     beforeAll(() => {
-        browser.url(constants.routes.linodes);
-        ListLinodes.linodesDisplay();
-        testLinode = ListLinodes.linode[0].$(ListLinodes.linodeLabel.selector).getText();
+        browser.url(constants.routes.dashboard);
     });
 
     describe('Search Displays Suite', () => {
@@ -38,7 +33,7 @@ describe('Header - Search Suite', () => {
     });
 
     it('should display search suggestions on a legitmate search', () => {
-        SearchBar.executeSearch(testLinode);
+        SearchBar.executeSearch('test');
         SearchBar.assertSuggestions();
     });
 
@@ -59,7 +54,7 @@ describe('Header - Search Suite', () => {
         browser.url(constants.routes.dashboard);
         const currentUrl = browser.getUrl();
         
-        SearchBar.executeSearch(testLinode);
+        SearchBar.executeSearch('test');
         browser.waitForVisible('[data-qa-suggestion]');
 
         SearchBar.suggestions[0].click();
